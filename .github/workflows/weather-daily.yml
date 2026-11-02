@@ -25,3 +25,14 @@ jobs:
           git add weather.json weather-report.md
           git diff --cached --quiet || git commit -m "Update daily weather report"
           git push
+      - name: Update Google Drive report
+        env:
+          GOOGLE_DRIVE_FILE_ID: ${{ secrets.GOOGLE_DRIVE_FILE_ID }}
+          GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GOOGLE_DRIVE_FILE_ID" ] || [ -z "$GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "Configure GOOGLE_DRIVE_FILE_ID and GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON repository secrets." >&2
+            exit 1
+          fi
+          python -m pip install google-auth
+          python sync-drive.py
