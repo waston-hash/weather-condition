@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Fetch a three-day Wuhan/Tokyo/London forecast and write JSON + Chinese report."""
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -28,26 +28,39 @@ def advice(code, rain, high, wind):
     return {"穿衣": clothes, "带伞": "建议携带" if umbrella else "通常无需，按需备伞",
             "通勤": commute, "户外": outdoor}
 
-def fetch(city, coords):
+def fetch(city, coords, dates):
     lat, lon, tz = coords
     query = urlencode({"latitude":lat,"longitude":lon,"daily":",".join(DAILY),
-                       "timezone":tz,"forecast_days":4})
+                       "timezone":tz,"start_date":dates[0],"end_date":dates[-1]})
     req = Request("https://api.open-meteo.com/v1/forecast?"+query,
                   headers={"User-Agent":"weather-daily/1.0","Accept":"application/json"})
     with urlopen(req, timeout=30) as response:
         return json.load(response)
 
 def main():
-    generated = datetime.now().astimezone().isoformat(timespec="seconds")
-    data = {"generated_at":generated,"source":"Open-Meteo Forecast API (https://open-meteo.com/)","cities":[]}
-    lines = ["# 武汉 · 东京 · 伦敦天气日报", f"生成时间：{generated}", "预报范围：各城市当地时间，从明天起连续三天。"]
+    now = datetime.now(timezone(timedelta(hours=8)))
+    generated = now.isoformat(timespec="seconds")
+    dates = [(now.date() + timedelta(days=i)).isoformat() for i in range(1, 4)]
+    data = {"generated_at":generated,"source":"Open-Meteo Forecast API (https://open-meteo.com/)","target_dates":dates,"cities":[]}
+    lines = ["# 武汉 · 东京 · 伦敦天气日报", f"生成时间：{generated}", f"预报范围：按北京时间运行日的次日起连续三天（{dates[0]} 至 {dates[-1]}）；每日数据按各城市当地日期统计。", "数据来源：Open-Meteo Forecast API（https://open-meteo.com/）。降水概率为每日最高值，风速为每日最大值。"]
     for city, coords in CITIES.items():
-        raw = fetch(city, coords)
+        raw = fetch(city, coords, dates)
         d = raw["daily"]
+        if d["time"] != dates:
+            raise ValueError(f"{city}: forecast dates do not match {dates}")
+        for key in DAILY:
+            values = d[key]
+            if len(values) != 3 or any(v is None for v in values):
+                raise ValueError(f"{city}: incomplete {key}")
+        for i in range(3):
+            if not (0 <= d["precipitation_probability_max"][i] <= 100):
+                raise ValueError(f"{city}: invalid precipitation probability")
+            if d["temperature_2m_min"][i] > d["temperature_2m_max"][i] or d["wind_speed_10m_max"][i] < 0:
+                raise ValueError(f"{city}: invalid temperature or wind")
         entry = {"city":city,"timezone":raw.get("timezone"),"coordinates":{"latitude":coords[0],"longitude":coords[1]},
                  "fetched_at":datetime.now().astimezone().isoformat(timespec="seconds"),"daily":[]}
         lines += ["", f"## {city}"]
-        for i in range(1, 4):
+        for i in range(3):
             code=d["weather_code"][i]; hi=d["temperature_2m_max"][i]; lo=d["temperature_2m_min"][i]
             rain=d["precipitation_probability_max"][i]; wind=d["wind_speed_10m_max"][i]
             day={"date":d["time"][i],"weather_code":code,"condition":LABELS.get(code,"天气状况代码"+str(code)),
@@ -63,3 +76,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
