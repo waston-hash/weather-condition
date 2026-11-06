@@ -31,8 +31,8 @@ jobs:
           GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON }}
         run: |
           if [ -z "$GOOGLE_DRIVE_FILE_ID" ] || [ -z "$GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON" ]; then
-            echo "Configure GOOGLE_DRIVE_FILE_ID and GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON repository secrets." >&2
-            exit 1
+            echo "Google Drive secrets are not configured; skipping report sync."
+            exit 0
           fi
           python -m pip install google-auth
           python sync-drive.py
