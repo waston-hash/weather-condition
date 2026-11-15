@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-15T02:39:50+08:00",
+  "generated_at": "2026-11-16T03:16:20+08:00",
   "source": "Open-Meteo Forecast API (https://open-meteo.com/)",
   "target_dates": [
-    "2026-11-16",
     "2026-11-17",
-    "2026-11-18"
+    "2026-11-18",
+    "2026-11-19"
   ],
   "cities": [
     {
@@ -14,31 +14,16 @@
         "latitude": 30.5928,
         "longitude": 114.3055
       },
-      "fetched_at": "2026-11-14T18:39:50+00:00",
+      "fetched_at": "2026-11-15T19:16:21+00:00",
       "daily": [
         {
-          "date": "2026-11-16",
-          "weather_code": 53,
-          "condition": "毛毛雨",
-          "temperature_max_c": 19.7,
-          "temperature_min_c": 12.6,
-          "precipitation_probability_max_percent": 75,
-          "wind_speed_max_kmh": 14.8,
-          "advice": {
-            "穿衣": "薄外套",
-            "带伞": "建议携带",
-            "通勤": "雨天预留通勤时间，注意路滑",
-            "户外": "户外活动注意避雨"
-          }
-        },
-        {
           "date": "2026-11-17",
-          "weather_code": 55,
-          "condition": "毛毛雨",
-          "temperature_max_c": 15.1,
-          "temperature_min_c": 12.3,
+          "weather_code": 61,
+          "condition": "小雨",
+          "temperature_max_c": 16.3,
+          "temperature_min_c": 11.7,
           "precipitation_probability_max_percent": 96,
-          "wind_speed_max_kmh": 14.6,
+          "wind_speed_max_kmh": 13.6,
           "advice": {
             "穿衣": "外套",
             "带伞": "建议携带",
@@ -48,17 +33,32 @@
         },
         {
           "date": "2026-11-18",
-          "weather_code": 51,
+          "weather_code": 55,
           "condition": "毛毛雨",
-          "temperature_max_c": 14.9,
-          "temperature_min_c": 7.6,
+          "temperature_max_c": 14.7,
+          "temperature_min_c": 7.4,
           "precipitation_probability_max_percent": 32,
-          "wind_speed_max_kmh": 13.8,
+          "wind_speed_max_kmh": 16.6,
           "advice": {
             "穿衣": "外套",
             "带伞": "建议携带",
             "通勤": "雨天预留通勤时间，注意路滑",
             "户外": "户外活动注意避雨"
+          }
+        },
+        {
+          "date": "2026-11-19",
+          "weather_code": 2,
+          "condition": "局部多云",
+          "temperature_max_c": 14.4,
+          "temperature_min_c": 5.4,
+          "precipitation_probability_max_percent": 1,
+          "wind_speed_max_kmh": 7.6,
+          "advice": {
+            "穿衣": "外套",
+            "带伞": "通常无需，按需备伞",
+            "通勤": "适合常规通勤",
+            "户外": "适合安排户外活动"
           }
         }
       ]
@@ -70,31 +70,16 @@
         "latitude": 35.6762,
         "longitude": 139.6503
       },
-      "fetched_at": "2026-11-14T18:39:50+00:00",
+      "fetched_at": "2026-11-15T19:16:21+00:00",
       "daily": [
         {
-          "date": "2026-11-16",
-          "weather_code": 2,
-          "condition": "局部多云",
-          "temperature_max_c": 18.0,
-          "temperature_min_c": 12.0,
-          "precipitation_probability_max_percent": 47,
-          "wind_speed_max_kmh": 9.3,
-          "advice": {
-            "穿衣": "薄外套",
-            "带伞": "建议携带",
-            "通勤": "雨天预留通勤时间，注意路滑",
-            "户外": "户外活动注意避雨"
-          }
-        },
-        {
           "date": "2026-11-17",
-          "weather_code": 61,
-          "condition": "小雨",
-          "temperature_max_c": 13.6,
-          "temperature_min_c": 9.3,
+          "weather_code": 55,
+          "condition": "毛毛雨",
+          "temperature_max_c": 12.0,
+          "temperature_min_c": 9.0,
           "precipitation_probability_max_percent": 65,
-          "wind_speed_max_kmh": 8.3,
+          "wind_speed_max_kmh": 7.7,
           "advice": {
             "穿衣": "外套",
             "带伞": "建议携带",
@@ -104,14 +89,29 @@
         },
         {
           "date": "2026-11-18",
-          "weather_code": 81,
-          "condition": "阵雨",
-          "temperature_max_c": 17.2,
-          "temperature_min_c": 9.2,
+          "weather_code": 63,
+          "condition": "中雨",
+          "temperature_max_c": 15.6,
+          "temperature_min_c": 9.0,
           "precipitation_probability_max_percent": 84,
-          "wind_speed_max_kmh": 14.2,
+          "wind_speed_max_kmh": 8.8,
           "advice": {
             "穿衣": "外套",
+            "带伞": "建议携带",
+            "通勤": "雨天预留通勤时间，注意路滑",
+            "户外": "户外活动注意避雨"
+          }
+        },
+        {
+          "date": "2026-11-19",
+          "weather_code": 51,
+          "condition": "毛毛雨",
+          "temperature_max_c": 18.3,
+          "temperature_min_c": 8.5,
+          "precipitation_probability_max_percent": 12,
+          "wind_speed_max_kmh": 8.6,
+          "advice": {
+            "穿衣": "薄外套",
             "带伞": "建议携带",
             "通勤": "雨天预留通勤时间，注意路滑",
             "户外": "户外活动注意避雨"
@@ -126,31 +126,16 @@
         "latitude": 51.5072,
         "longitude": -0.1276
       },
-      "fetched_at": "2026-11-14T18:39:51+00:00",
+      "fetched_at": "2026-11-15T19:16:21+00:00",
       "daily": [
         {
-          "date": "2026-11-16",
+          "date": "2026-11-17",
           "weather_code": 61,
           "condition": "小雨",
-          "temperature_max_c": 8.3,
-          "temperature_min_c": 5.3,
-          "precipitation_probability_max_percent": 54,
-          "wind_speed_max_kmh": 18.4,
-          "advice": {
-            "穿衣": "厚外套或保暖层",
-            "带伞": "建议携带",
-            "通勤": "雨天预留通勤时间，注意路滑",
-            "户外": "户外活动注意避雨"
-          }
-        },
-        {
-          "date": "2026-11-17",
-          "weather_code": 63,
-          "condition": "中雨",
-          "temperature_max_c": 12.2,
-          "temperature_min_c": 6.7,
+          "temperature_max_c": 12.5,
+          "temperature_min_c": 5.6,
           "precipitation_probability_max_percent": 87,
-          "wind_speed_max_kmh": 23.8,
+          "wind_speed_max_kmh": 26.3,
           "advice": {
             "穿衣": "外套",
             "带伞": "建议携带",
@@ -162,12 +147,27 @@
           "date": "2026-11-18",
           "weather_code": 51,
           "condition": "毛毛雨",
-          "temperature_max_c": 11.4,
-          "temperature_min_c": 8.4,
+          "temperature_max_c": 9.4,
+          "temperature_min_c": 6.7,
           "precipitation_probability_max_percent": 55,
-          "wind_speed_max_kmh": 11.2,
+          "wind_speed_max_kmh": 13.0,
           "advice": {
-            "穿衣": "外套",
+            "穿衣": "厚外套或保暖层",
+            "带伞": "建议携带",
+            "通勤": "雨天预留通勤时间，注意路滑",
+            "户外": "户外活动注意避雨"
+          }
+        },
+        {
+          "date": "2026-11-19",
+          "weather_code": 3,
+          "condition": "阴",
+          "temperature_max_c": 9.4,
+          "temperature_min_c": 6.1,
+          "precipitation_probability_max_percent": 37,
+          "wind_speed_max_kmh": 15.5,
+          "advice": {
+            "穿衣": "厚外套或保暖层",
             "带伞": "建议携带",
             "通勤": "雨天预留通勤时间，注意路滑",
             "户外": "户外活动注意避雨"
